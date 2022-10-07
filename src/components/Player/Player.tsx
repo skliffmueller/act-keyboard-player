@@ -1,5 +1,6 @@
 import "./Player.scss";
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from "react-router-dom";
 import {
     Quality,
     TextCue,
@@ -21,6 +22,7 @@ import {
 } from '@heroicons/react/24/solid'
 
 import { usePlayerContext } from "../../providers/player";
+import { useVideosContext } from "../../providers/videos";
 
 import { secondsToTime } from "../../lib/transform";
 
@@ -39,7 +41,7 @@ function Player(props: PlayerProps) {
 
     const defaultIconClassName = `w-8 h-8`;
     const buttonClassName = `p-2`;
-
+    const { getVideo, state: videoState } = useVideosContext();
     const {
         player,
         video,
@@ -51,8 +53,14 @@ function Player(props: PlayerProps) {
     } = usePlayerContext();
 
     useEffect(() => {
-        load(props.srcUrl);
-    }, [video])
+        if(videoState.single && video) {
+            if(videoState.single.live) {
+                load(props.srcUrl);
+            } else {
+                load(`https://${videoState.single.Bucket}.s3.amazonaws.com/${videoState.single.playlistKey}`);
+            }
+        }
+    }, [video, videoState.single]);
 
     const playButtonOnClick = () => (state.isPaused ? controls.play() : controls.pause());
     const muteButtonOnClick = () => (state.isMuted ? controls.unmute() : controls.mute());
@@ -155,7 +163,7 @@ function Player(props: PlayerProps) {
                     </div>
                     <div className="flex">
                         <button className={buttonClassName} onClick={() => setIsDialogActive(!isDialogActive)}>
-                            <span>{state.quality ? state.quality.name : 'Auto'}</span>
+                            <div className="inline-block px-2">{state.quality ? state.quality.name : 'Auto'}</div>
                             <AdjustmentsHorizontalIcon className={`${defaultIconClassName} inline-block`} />
                         </button>
                         <button className={buttonClassName} onClick={() => fullscreenOnClick()}>

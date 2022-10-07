@@ -214,7 +214,7 @@ export class Keyboard {
             const fps = 1 / deltaTime;             // compute frames per second
             if(fps < 24) {
                 this.frameDropCount++;
-                if(this.frameDropCount > 1) {
+                if(this.frameDropCount > 3) {
                     if(this.lights.length) {
                         this.removePrettyLights();
                     }

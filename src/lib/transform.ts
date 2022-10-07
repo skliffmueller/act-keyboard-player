@@ -1,3 +1,25 @@
+const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+]
+
+export function toDateString(date: Date) {
+    const monthIndex = date.getMonth();
+    const twelveHour = (date.getHours() % 12) + 1;
+    const amPm = date.getHours() < 12 ? 'am' : 'pm';
+    return `${months[monthIndex]} ${date.getDate()} ${twelveHour}:${doubleZero(date.getMinutes())}${amPm}`;
+}
+
 export function secondsToTime(seconds: number) {
     const ms = seconds % 1;
     seconds -= ms;
@@ -14,7 +36,7 @@ export function secondsToTime(seconds: number) {
 }
 
 export function doubleZero(value: number) {
-    return value < 9
+    return value < 10
                 ? `0${value}`
                 : `${value}`;
 }

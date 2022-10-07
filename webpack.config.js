@@ -68,5 +68,11 @@ module.exports = {
     devServer: {
         static: './dist',
         hot: true,
+        proxy: {
+            '/data':{
+                target: 'http://act-player-video-archive.s3-website-us-east-1.amazonaws.com',
+                changeOrigin: true,
+            },
+        }
     }
 };

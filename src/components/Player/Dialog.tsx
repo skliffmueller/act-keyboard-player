@@ -13,15 +13,16 @@ function Dialog(props: DialogProps) {
         qualities,
         onChange,
     } = props;
+    const liClassName = 'w-full py-2 px-4 text-right cursor-pointer ';
     return (
-        <div className="absolute bottom-24 right-16 bg-gray-800">
-            <ul className="w-64">
+        <div className="absolute bottom-16 right-16 bg-gray-800">
+            <ul className="min-w-24">
                 {qualities.map((qualityItem: Quality) => (
-                    <li key={qualityItem.name} className="flex justify-between w-full py-2 px-4" onClick={() => onChange(qualityItem)}>
+                    <li key={qualityItem.name} className={`${liClassName} ${qualityItem?.name === quality?.name && 'bg-slate-600'}`} onClick={() => onChange(qualityItem)}>
                         {qualityItem.name}
                     </li>
                 ))}
-                <li className="flex justify-between w-full py-2 px-4" onClick={() => onChange(null)}>
+                <li className={`${liClassName} ${!quality && 'bg-slate-600'}`} onClick={() => onChange(null)}>
                     Auto
                 </li>
             </ul>

@@ -262,7 +262,8 @@ const PlayerProvider = (props: PlayerProviderProps) => {
         if(!player.current) return;
 
         player.current.seekTo(seconds);
-    }, [player]);
+        if(!mute) player.current.setMuted(false);
+    }, [player, mute]);
 
     const setQuality = useCallback((quality: Quality | null) => {
         if(!player.current) return;
