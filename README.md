@@ -4,7 +4,11 @@ This is a demonstration of an Amazon IVS player. It contains a simulated keyboar
 
 [Check out the live demo](http://act-player-video-archive.s3-website-us-east-1.amazonaws.com/)
 
-Also checkout my pairing project [act-rtmp-encoder](https://github.com/skliffmueller/act-rtmp-encoder) Which was used in generating the demo live stream above.
+Also checkout my pairing projects
+
+[act-rtmp-encoder](https://github.com/skliffmueller/act-rtmp-encoder) Which was used in generating the demo live stream above.
+
+[Act IVS API](https://github.com/skliffmueller/act-ivs-api) Which generates the list.json file for video lists
 
 ## Tech Stacks
 

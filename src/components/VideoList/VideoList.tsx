@@ -11,7 +11,7 @@ function VideoItem(props) {
         <Link to={{ hash: props.streamId }}>
             <li className={liClassName}>
                 <div className="relative">
-                    <img className={"brightness-50"} width={220} height={113} alt={`Video ${props.startAt}`} src={`https://ivs-act-1.s3.amazonaws.com/${props.thumbnailsPath}/thumb0.jpg`} />
+                    <img className={"brightness-50"} width={220} height={113} alt={`Video ${props.startAt}`} src={`https://${props.Bucket}.s3.amazonaws.com/${props.thumbnailsPath}/thumb0.jpg`} />
                     {props.live && (<div className="absolute bottom-2 right-2 rounded px-2 py-1/2 bg-red-600">live</div>)}
                     {!props.live && (<div className="absolute bottom-2 right-2 rounded px-2 py-1/2 bg-opaque-900">{secondsToTime(props.duration/1000)}</div>)}
                 </div>
