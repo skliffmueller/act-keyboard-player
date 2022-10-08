@@ -27,7 +27,7 @@ function KeyboardComponent() {
             try {
                 const obj = JSON.parse(cue.text);
                 if(Array.isArray(obj)) {
-                    cueLog.push({ startTime: cue.startTime + 7, data: obj })
+                    cueLog.push({ startTime: cue.startTime + 10, data: obj })
                 }
             } catch(e) {
 

@@ -18,7 +18,10 @@ function Dialog(props: DialogProps) {
         <div className="absolute bottom-16 right-16 bg-gray-800">
             <ul className="min-w-24">
                 {qualities.map((qualityItem: Quality) => (
-                    <li key={qualityItem.name} className={`${liClassName} ${qualityItem?.name === quality?.name && 'bg-slate-600'}`} onClick={() => onChange(qualityItem)}>
+                    <li key={qualityItem.name}
+                        className={`${liClassName} ${qualityItem?.name === quality?.name && 'bg-slate-600'}`}
+                        onClick={() => onChange(qualityItem)}
+                    >
                         {qualityItem.name}
                     </li>
                 ))}

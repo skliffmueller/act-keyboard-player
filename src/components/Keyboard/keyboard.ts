@@ -68,7 +68,7 @@ export class Keyboard {
 
             this.scene.add(leftLight);
 
-            this.addPrettyLights();
+            // this.addPrettyLights();
             this.frameDropCount = 0;
             this.then = -1;
             requestAnimationFrame(this.animate);
@@ -209,22 +209,22 @@ export class Keyboard {
         requestAnimationFrame( this.animate );
 
         now *= 0.001;                          // convert to seconds
-        if(this.then !== -1) {
-            const deltaTime = now - this.then;          // compute time since last frame
-            const fps = 1 / deltaTime;             // compute frames per second
-            if(fps < 24) {
-                this.frameDropCount++;
-                if(this.frameDropCount > 3) {
-                    if(this.lights.length) {
-                        this.removePrettyLights();
-                    }
-                }
-            } else {
-                if(this.frameDropCount > 0) {
-                    this.frameDropCount--;
-                }
-            }
-        }
+        // if(this.then !== -1) {
+        //     const deltaTime = now - this.then;          // compute time since last frame
+        //     const fps = 1 / deltaTime;             // compute frames per second
+        //     if(fps < 24) {
+        //         this.frameDropCount++;
+        //         if(this.frameDropCount > 3) {
+        //             if(this.lights.length) {
+        //                 this.removePrettyLights();
+        //             }
+        //         }
+        //     } else {
+        //         if(this.frameDropCount > 0) {
+        //             this.frameDropCount--;
+        //         }
+        //     }
+        // }
         this.then = now;                            // remember time for next frame
         const time = performance.now();
 
